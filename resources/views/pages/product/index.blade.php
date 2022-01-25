@@ -49,6 +49,9 @@
                                             </form>
                                         </td>
                                     </tr>
+                                    <?php
+                                    $i++;
+                                    ?>
                                     @empty
                                         <tr>
                                             <td colspan="6" class="text-center p-5">
