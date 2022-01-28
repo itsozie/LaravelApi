@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Request\ProductGalleryRequest;
+use App\Models\ProductGallery;
 use App\Models\Product;
-use App\Http\Requests\ProductRequest;
-
 use Illuminate\Http\Request;
-use illuminate\Support\Str;
 
-class ProductController extends Controller
+class ProductGalleryController extends Controller
 {
        /**
      * Create a new controller instance.
@@ -18,7 +18,7 @@ class ProductController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -26,9 +26,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $items = Product::all();
+        $items = ProductGallery::with('product')->get();
 
-        return view('pages.product.index')->with([
+        return view('pages.product-galleries.index')->with([
             'items' => $items
         ]);
     }
@@ -40,7 +40,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('pages.product.create');
+        //
     }
 
     /**
@@ -49,13 +49,9 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->all();
-        $data['slug'] = Str::slug($request->name);
-
-        Product::create($data);
-        return redirect()->route('products.index');
+        //
     }
 
     /**
@@ -77,11 +73,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $item = Product::findOrFail($id);
-
-        return view('pages.product.edit')->with([
-            'item' => $item
-        ]);
+        //
     }
 
     /**
@@ -91,14 +83,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $data = $request->all();
-        $data['slug'] = Str::slug($request->name);
-
-        $item = Product::findOrFail($id);
-        $item->update($data);
-        return redirect()->route('products.index');
+        //
     }
 
     /**
@@ -109,9 +96,6 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $item = Product::findOrFail($id);
-        $item -> delete();
-
-        return redirect()->route('products.index');
+        //
     }
 }
