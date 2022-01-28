@@ -13,7 +13,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
+                                        <th>No</th>
                                         <th>Nama Barang</th>
                                         <th>Foto</th>
                                         <th>Deafault</th>
@@ -27,16 +27,16 @@
                                     @forelse ($items as $item)
                                     <tr>
                                         <td><?= $i ?></td>
-                                        <td>$item->id</td>
-                                        <td>$item->product->name</td>
+                                        <td>{{$item->product->name}}</td>
                                         <td>
                                             <img src="{{ url($item->photo) }}" alt="">
                                         </td>
                                         <td>{{$item->is_default ? 'ya' : 'tidak'}}</td>
                                         <td>
-                                            <a href=" {{route('products.edit', $item->id)}} " class="btn btn-primary btn-sm">
+                                            <a href=" {{route('products-galleries.edit', $item->id)}} " class="btn btn-primary btn-sm">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
+
                                             <form action=" {{route('products-galleries.destroy', $item->id)}} " method="post" class="d-inline">
                                                 @csrf
                                                 @method('delete')
