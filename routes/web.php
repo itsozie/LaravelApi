@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductGalleryController;
+use App\Http\Controllers\TransactionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,3 +28,5 @@ Route::resource('products','ProductController');
 Route::get('products/{id}/gallery','ProductController@gallery')->name('products.gallery') ;
 
 Route::resource('products-galleries','ProductGalleryController');
+
+Route::resource('transaction','TransactionController');
