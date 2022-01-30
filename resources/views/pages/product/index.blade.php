@@ -14,11 +14,11 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>
-                                        <th>Type</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
-                                        <th>Action</th>
+                                        <th>Nama</th>
+                                        <th>Tipe</th>
+                                        <th>Harga</th>
+                                        <th>Jumlah Stock</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -30,7 +30,7 @@
                                         <td><?= $i ?></td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->type }}</td>
-                                        <td>{{ $item->price }}</td>
+                                        <td> @currency($item->price)</td>
                                         <td>{{ $item->quantity }}</td>
                                         <td>
                                             <a href=" {{route('products.gallery', $item->id)}} " class="btn btn-info btn-sm">

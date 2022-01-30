@@ -63,21 +63,22 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        // $item = Transaction::with('details.product')->findOrFail($id);
-        // return view('pages.transaction.show')->with([
-        //     'item' => $item
-        // ]);
-        $transaction = Transaction::query()->where('id',$id)->first();
-        /*
-        SELECT p.name,p.type,p.price FROM transaction_details as td LEFT JOIN products as p ON p.id = td.products_id
-        WHERE transactions_id = 1;;
-        */
-        $items = TransactionDetail::query()
-            ->leftJoin('products as p','p.id','transaction_details.products_id')
-            ->select('p.type','p.name','p.price')
-            ->where('transaction_details.transactions_id',$id)
-            ->get();
-        return view('pages.transaction.show',compact('transaction','items'));    
+        $item = Transaction::with('details.product')->findOrFail($id);
+        
+        return view('pages.transaction.show')->with([
+            'item' => $item
+        ]);
+        // $transaction = Transaction::query()->where('id',$id)->first();
+        // /*
+        // SELECT p.name,p.type,p.price FROM transaction_details as td LEFT JOIN products as p ON p.id = td.products_id
+        // WHERE transactions_id = 1;;
+        // */
+        // $items = TransactionDetail::query()
+        //     ->leftJoin('products as p','p.id','transaction_details.products_id')
+        //     ->select('p.type','p.name','p.price')
+        //     ->where('transaction_details.transactions_id',$id)
+        //     ->get();
+        // return view('pages.transaction.show',compact('transaction','items'));    
     }
 
     /**
