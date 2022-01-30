@@ -26,13 +26,13 @@
                                     <?php
                                     $i =1; 
                                     ?>
-                                    @forelse ($items as $item)
+                                    @forelse ($item as $item)
                                     <tr>
                                         <td><?= $i ?></td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->number }}</td>
-                                        <td>Rp{{ $item->transaction_total }}</td>
+                                        <td>@currency($item->transaction_total)</td>
                                         <td>
                                             @if ($item->transaction_status == 'PENDING')
                                                 <span class="badge badge-info">
@@ -57,10 +57,10 @@
                                                 <i class="fa fa-times"></i>
                                                 </a>     --}}
                                             @endif
-                                            <a  href="#myModal"
+                                            <a  href="{{route('transaction.show', $item->id)}}"
                                                 data-remote="{{route('transaction.show', $item->id)}}"
-                                                data-togle="modal"
-                                                data-target="#myModal"
+                                                data-toggle="modal"
+                                                data-target="#mymodal"
                                                 data-title="Detail Transaksi {{ $item->uuid }}"
                                                 class="btn btn-info btn-sm">
                                                 <i class="fa fa-eye"></i>
