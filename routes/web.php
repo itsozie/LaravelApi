@@ -29,4 +29,7 @@ Route::get('products/{id}/gallery','ProductController@gallery')->name('products.
 
 Route::resource('products-galleries','ProductGalleryController');
 
+Route::get('transaction/{id}/set-status','TransactionController@setStatus')
+     ->name('transaction.status') ;
+
 Route::resource('transaction','TransactionController');

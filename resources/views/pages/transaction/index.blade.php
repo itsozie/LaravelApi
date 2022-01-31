@@ -17,9 +17,9 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Nomor</th>
-                                        <th>Transaction Total</th>
-                                        <th>Transaction Status</th>
-                                        <th>Action</th>
+                                        <th>Total Transaksi</th>
+                                        <th>Status Transaksi</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -39,7 +39,7 @@
                                             @elseif($item->transaction_status == 'SUCCES')
                                                 <span class="badge badge-success">
                                             @elseif($item->transaction_status == 'FAILED')
-                                                <span class="badge badge-info">
+                                                <span class="badge badge-danger">
                                             @else
                                                 <span class="badge badge-info">
                                             @endif
@@ -48,14 +48,14 @@
                                         </td>
                                         <td>
                                             @if ($item->transaction_status =='PENDING')
-                                                {{-- <a href="{{ route('transaction.status', $item->id) }} ? status=SUCCES" 
+                                                <a href="{{ route('transaction.status', $item->id) }}?status=SUCCES" 
                                                 class="btn btn-success btn-sm">
                                                 <i class="fa fa-check"></i>
                                                 </a>    
-                                                <a href="{{ route('transaction.status', $item->id) }} ? status=FAILED" 
+                                                <a href="{{ route('transaction.status', $item->id) }}?status=FAILED" 
                                                 class="btn btn-warning btn-sm">
                                                 <i class="fa fa-times"></i>
-                                                </a>     --}}
+                                                </a>    
                                             @endif
                                             <a  href="{{route('transaction.show', $item->id)}}"
                                                 data-remote="{{route('transaction.show', $item->id)}}"
