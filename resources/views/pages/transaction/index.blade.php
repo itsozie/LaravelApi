@@ -47,7 +47,7 @@
                                             </span>
                                         </td>
                                         <td>
-                                            @if ($item->transaction_status =='PENDING')
+                                            @if($item->transaction_status =='PENDING')
                                                 <a href="{{ route('transaction.status', $item->id) }}?status=SUCCES" 
                                                 class="btn btn-success btn-sm">
                                                 <i class="fa fa-check"></i>
